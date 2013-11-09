@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>split (Player)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File Player.rb, line 251</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">split</span>(<span class="ruby-identifier">next_cards</span>)
+    <span class="ruby-identifier">hand</span> = <span class="ruby-ivar">@hands</span>[<span class="ruby-ivar">@current_hand</span>]
+    <span class="ruby-identifier">hand_cards</span> = <span class="ruby-identifier">hand</span>.<span class="ruby-identifier">cards</span>                               <span class="ruby-comment cmt"># Get the two cards of the hand</span>
+    <span class="ruby-value">2</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">index</span><span class="ruby-operator">|</span>                                    <span class="ruby-comment cmt"># One split results in creation of two hands</span>
+      <span class="ruby-identifier">new_hand</span> = <span class="ruby-constant">Hand</span>.<span class="ruby-identifier">new</span>([<span class="ruby-identifier">hand_cards</span>[<span class="ruby-identifier">index</span>]], <span class="ruby-identifier">hand</span>.<span class="ruby-identifier">bet</span>)  <span class="ruby-comment cmt"># Create new hands with one card each of the original hand cards</span>
+      <span class="ruby-identifier">new_card</span> = <span class="ruby-identifier">next_cards</span>[<span class="ruby-identifier">index</span>]                        <span class="ruby-comment cmt"># Obtain a new card from the shoe</span>
+      <span class="ruby-identifier">new_hand</span>.<span class="ruby-identifier">cards</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">new_card</span>)                       <span class="ruby-comment cmt"># Add this card to the newly created hand</span>
+      <span class="ruby-ivar">@hands</span>.<span class="ruby-identifier">insert</span>(<span class="ruby-ivar">@current_hand</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">new_hand</span>)          <span class="ruby-comment cmt"># The newly created hands are pushed to the immediate right of the hand</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">place_bet</span>(<span class="ruby-identifier">hand</span>.<span class="ruby-identifier">bet</span>)                                   <span class="ruby-comment cmt"># Double the original bet</span>
+    <span class="ruby-ivar">@hands</span>.<span class="ruby-identifier">delete_at</span>(<span class="ruby-ivar">@current_hand</span>)                       <span class="ruby-comment cmt"># Remove the hand that was split</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

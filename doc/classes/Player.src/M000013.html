@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>check_blackjack (Player)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File Player.rb, line 175</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check_blackjack</span>()
+    <span class="ruby-identifier">hand</span> = <span class="ruby-ivar">@hands</span>[<span class="ruby-value">0</span>]
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">hand</span>.<span class="ruby-identifier">is_blackjack</span>()
+      <span class="ruby-identifier">print_player_hands</span>()
+      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Player #{@position} has a blackjack. You win 3:2!&quot;</span>
+      <span class="ruby-identifier">add_winnings</span>(<span class="ruby-identifier">hand</span>, <span class="ruby-identifier">blackjack</span>=<span class="ruby-keyword kw">true</span>)                <span class="ruby-comment cmt"># Add the winnings of the bet to the player</span>
+      <span class="ruby-ivar">@current_hand</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

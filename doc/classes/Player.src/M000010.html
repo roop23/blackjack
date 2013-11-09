@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>settle_round (Player)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File Player.rb, line 124</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">settle_round</span>(<span class="ruby-identifier">dealer_value</span>, <span class="ruby-identifier">dealer_has_blackjack</span>)
+    <span class="ruby-ivar">@hands</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">hand</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">hand</span>.<span class="ruby-identifier">is_bust</span>()                                                      <span class="ruby-comment cmt"># Only deal with hands that are still active</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">hand</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@hands</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">hand</span>.<span class="ruby-identifier">is_blackjack</span>())                        <span class="ruby-comment cmt"># Blackjack hands are already considered inside start_round</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dealer_value</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">21</span> <span class="ruby-operator">||</span> (<span class="ruby-identifier">hand</span>.<span class="ruby-identifier">hand_value</span>() <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">dealer_value</span>)          <span class="ruby-comment cmt"># Player won! Add winnings of the hand to the player</span>
+            <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Player #{@position} wins against the dealer&quot;</span>
+            <span class="ruby-identifier">add_winnings</span>(<span class="ruby-identifier">hand</span>, <span class="ruby-identifier">blackjack</span>=<span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">push</span>=<span class="ruby-keyword kw">false</span>)
+          <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">dealer_has_blackjack</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">hand</span>.<span class="ruby-identifier">hand_value</span>() <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">dealer_value</span>      <span class="ruby-comment cmt"># If dealer has a blackjack or has higher hand value</span>
+            <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Player #{@position} loses to the dealer&quot;</span>                    <span class="ruby-comment cmt"># User loses the bet he played</span>
+          <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">hand</span>.<span class="ruby-identifier">hand_value</span>() <span class="ruby-operator">==</span> <span class="ruby-identifier">dealer_value</span>                             <span class="ruby-comment cmt"># Player drew. He gets back the bet he placed for the hand</span>
+            <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Player #{@position} gets a push&quot;</span>
+            <span class="ruby-identifier">add_winnings</span>(<span class="ruby-identifier">hand</span>, <span class="ruby-identifier">blackjack</span>=<span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">push</span>=<span class="ruby-keyword kw">true</span>)
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>   
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Blackjack</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Blackjack</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/Blackjack_rb.html">
+                Blackjack.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+The class <a href="Blackjack.html">Blackjack</a> is used to represent a
+single blackjack table. An object of this class represents a real world
+blackjack game table.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000029">add_player</a>&nbsp;&nbsp;
+      <a href="#M000033">clean_up_table</a>&nbsp;&nbsp;
+      <a href="#M000038">end_round</a>&nbsp;&nbsp;
+      <a href="#M000036">get_double_bet</a>&nbsp;&nbsp;
+      <a href="#M000034">get_initial_bet</a>&nbsp;&nbsp;
+      <a href="#M000028">init_cards</a>&nbsp;&nbsp;
+      <a href="#M000032">init_round</a>&nbsp;&nbsp;
+      <a href="#M000030">init_table</a>&nbsp;&nbsp;
+      <a href="#M000026">new</a>&nbsp;&nbsp;
+      <a href="#M000037">play_round</a>&nbsp;&nbsp;
+      <a href="#M000031">run_game</a>&nbsp;&nbsp;
+      <a href="#M000039">show_dealer_cards</a>&nbsp;&nbsp;
+      <a href="#M000027">start_blackjack</a>&nbsp;&nbsp;
+      <a href="#M000035">start_new_round</a>&nbsp;&nbsp;
+      <a href="#M000040">table_settle_round</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000026" class="method-detail">
+        <a name="M000026"></a>
+
+        <div class="method-heading">
+          <a href="Blackjack.src/M000026.html" target="Code" class="method-signature"
+            onclick="popupCode('Blackjack.src/M000026.html');return false;">
+          <span class="method-name">new</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method creates an object of the class. This method is called when a
+player has to be added to the table. Shoe and players are set as empty
+arrays. The dealer&#8216;s hand object is initialized only when a <a
+href="Blackjack.html#M000026">new</a> round is started. An object of <a
+href="Blackjack.html">Blackjack</a> class represents a real world blackjack
+table. Params: <tt>None</tt>
+</p>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000029" class="method-detail">
+        <a name="M000029"></a>
+
+        <div class="method-heading">
+          <a href="Blackjack.src/M000029.html" target="Code" class="method-signature"
+            onclick="popupCode('Blackjack.src/M000029.html');return false;">
+          <span class="method-name">add_player</span><span class="method-args">(money, position)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method adds a player to the players array of the table. Params:
+</p>
+<table>
+<tr><td valign="top"><tt>money</tt>:</td><td>the starting money of the player
+
+</td></tr>
+<tr><td valign="top"><tt>position</tt>:</td><td>the position of the player on the table
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M000033" class="method-detail">
+        <a name="M000033"></a>
+
+        <div class="method-heading">
+          <a href="Blackjack.src/M000033.html" target="Code" class="method-signature"
+            onclick="popupCode('Blackjack.src/M000033.html');return false;">
+          <span class="method-name">clean_up_table</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method is used to remove players who have run out of money on the
+table. Such users are informed of the action. If all the players on the
+table are removed as a result of this, then the can_continue flag is set to
+false to end the game loop. Params: <tt>None</tt>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000038" class="method-detail">
+        <a name="M000038"></a>
+
+        <div class="method-heading">
+          <a href="Blackjack.src/M000038.html" target="Code" class="method-signature"
+            onclick="popupCode('Blackjack.src/M000038.html');return false;">
+          <span class="method-name">end_round</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method wraps up the round that has been played during <a
+href="Blackjack.html#M000037">play_round</a> method. First the
+dealer&#8216;s cards are shown. Then the bets on the table for this round
+are settled. Then a clean up function is called to remove players who run
+out of money. Params: <tt>None</tt>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000036" class="method-detail">
+        <a name="M000036"></a>
+
+        <div class="method-heading">
+          <a href="Blackjack.src/M000036.html" target="Code" class="method-signature"
+            onclick="popupCode('Blackjack.src/M000036.html');return false;">
+          <span class="method-name">get_double_bet</span><span class="method-args">(player)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method prompts each player for their double down bet at the start of
+each round. The method stays in a loop asking for user input until a valid
+bet is received. The method then returns this bet value back to the caller
+method. Params:
+</p>
+<table>
+<tr><td valign="top"><tt>player</tt>:</td><td>the object to the player that needs to place the bet
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M000034" class="method-detail">
+        <a name="M000034"></a>
+
+        <div class="method-heading">
+          <a href="Blackjack.src/M000034.html" target="Code" class="method-signature"
+            onclick="popupCode('Blackjack.src/M000034.html');return false;">
+          <span class="method-name">get_initial_bet</span><span class="method-args">(player)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method prompts each player for their initial bet at the start of each
+round. The method stays in a loop asking for user input until a valid bet
+is received. The method then returns this bet value back to the caller
+method. Params:
+</p>
+<table>
+<tr><td valign="top"><tt>player</tt>:</td><td>the object to the player that needs to place the bet
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M000028" class="method-detail">
+        <a name="M000028"></a>
+
+        <div class="method-heading">
+          <a href="Blackjack.src/M000028.html" target="Code" class="method-signature"
+            onclick="popupCode('Blackjack.src/M000028.html');return false;">
+          <span class="method-name">init_cards</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method populates the shoe and then shuffles the shoe to ensure cards
+are obtained randomly from the shoe. This method uses the global variables
+Num_Decks (which holds the number of decks used for the game) and Cards
+(which is an array that holds the possible cards that a deck can be
+comprised of). Params: <tt>None</tt>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000032" class="method-detail">
+        <a name="M000032"></a>
+
+        <div class="method-heading">
+          <a href="Blackjack.src/M000032.html" target="Code" class="method-signature"
+            onclick="popupCode('Blackjack.src/M000032.html');return false;">
+          <span class="method-name">init_round</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method initiates one round of gameplay. <a
+href="Player.html">Player</a> hands pertaining to the previous round of
+gameplay are cleared. Params: <tt>None</tt>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000030" class="method-detail">
+        <a name="M000030"></a>
+
+        <div class="method-heading">
+          <a href="Blackjack.src/M000030.html" target="Code" class="method-signature"
+            onclick="popupCode('Blackjack.src/M000030.html');return false;">
+          <span class="method-name">init_table</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method gets the a valid user input for the number of players on the
+table and initializes the players and adds them to the table. Each player
+gets Initial_Money ($1000) to play the game. The position of placing the
+users is recorded for addressing players later on. Params: <tt>None</tt>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000037" class="method-detail">
+        <a name="M000037"></a>
+
+        <div class="method-heading">
+          <a href="Blackjack.src/M000037.html" target="Code" class="method-signature"
+            onclick="popupCode('Blackjack.src/M000037.html');return false;">
+          <span class="method-name">play_round</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method is the main body of the game loop. This method runs one
+complete round of blackjack with the players availale on the table. For
+each hand of each player, a loop is run which gets user action for every
+hand which the player has not yet played and acts accordingly. Params:
+<tt>None</tt>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000031" class="method-detail">
+        <a name="M000031"></a>
+
+        <div class="method-heading">
+          <a href="Blackjack.src/M000031.html" target="Code" class="method-signature"
+            onclick="popupCode('Blackjack.src/M000031.html');return false;">
+          <span class="method-name">run_game</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This starts initializes the game and starts the game loop that loops for
+every round of gameplay. This sets the game in action. This method first
+calls <a href="Blackjack.html#M000028">init_cards</a> to initialize the
+shoe, then <a href="Blackjack.html#M000030">init_table</a> to initialize
+the players on the table. Then the function goes into a loop. As long as at
+least one player has money to play and wants to play, the game continues.
+The calls inside the loop are to <a
+href="Blackjack.html#M000032">init_round</a> (creates a <a
+href="Blackjack.html#M000026">new</a> round) and <a
+href="Blackjack.html#M000037">play_round</a> (enables one round of game
+play) Params: <tt>None</tt>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000039" class="method-detail">
+        <a name="M000039"></a>
+
+        <div class="method-heading">
+          <a href="Blackjack.src/M000039.html" target="Code" class="method-signature"
+            onclick="popupCode('Blackjack.src/M000039.html');return false;">
+          <span class="method-name">show_dealer_cards</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method is used to represent the play of the dealer when the players
+have completed playing. If the dealer got a blackjack, no further action
+needs to be taken by the dealer. Else, the dealer has to hit on hand value
+&lt;= 16 and stay on hand value &gt;= 17. Params: <tt>None</tt>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000027" class="method-detail">
+        <a name="M000027"></a>
+
+        <div class="method-heading">
+          <a href="Blackjack.src/M000027.html" target="Code" class="method-signature"
+            onclick="popupCode('Blackjack.src/M000027.html');return false;">
+          <span class="method-name">start_blackjack</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method calls the <a href="Blackjack.html#M000031">run_game</a> method
+which starts the game of blackjack on the table. Params: <tt>None</tt>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000035" class="method-detail">
+        <a name="M000035"></a>
+
+        <div class="method-heading">
+          <a href="Blackjack.src/M000035.html" target="Code" class="method-signature"
+            onclick="popupCode('Blackjack.src/M000035.html');return false;">
+          <span class="method-name">start_new_round</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method gets the user input for the initial bets of each round of
+gameplay. Then, cards are dealt to each player and their hands are created.
+After all players are dealt cards, the dealer is dealt cards. dealer_hand
+corresponds to the hand of the dealer. This object is initialized here.
+Params: <tt>None</tt>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000040" class="method-detail">
+        <a name="M000040"></a>
+
+        <div class="method-heading">
+          <a href="Blackjack.src/M000040.html" target="Code" class="method-signature"
+            onclick="popupCode('Blackjack.src/M000040.html');return false;">
+          <span class="method-name">table_settle_round</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method is used to settle the active bets of the current round of
+gameplay. First the dealer cards are shown along with hand value. Then this
+method calls the settle_round method of each player in order to settle bets
+according to the hand value of the dealer. Params: <tt>None</tt>
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

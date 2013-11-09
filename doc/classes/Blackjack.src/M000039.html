@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>show_dealer_cards (Blackjack)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File Blackjack.rb, line 250</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">show_dealer_cards</span>()
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Dealer original cards are #{@dealer_hand.cards.join(',')}&quot;</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@dealer_hand</span>.<span class="ruby-identifier">is_blackjack</span>()                                        <span class="ruby-comment cmt"># If dealer has a blackjack, no further play is required</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Dealer has a blackjack!&quot;</span>
+      <span class="ruby-keyword kw">return</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">dealer_hand_value</span> = <span class="ruby-ivar">@dealer_hand</span>.<span class="ruby-identifier">hand_value</span>()                       <span class="ruby-comment cmt"># Compute current dealer hand value</span>
+      <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">dealer_hand_value</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">17</span>                                        <span class="ruby-comment cmt"># Hit if the hand value &lt;= 16</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Dealer hits&quot;</span>
+        <span class="ruby-ivar">@dealer_hand</span>.<span class="ruby-identifier">cards</span>.<span class="ruby-identifier">push</span>(<span class="ruby-ivar">@shoe</span>.<span class="ruby-identifier">pop</span>())                              <span class="ruby-comment cmt"># Receives one card from the shoe</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Dealer current cards are #{@dealer_hand.cards.join(',')}&quot;</span>   <span class="ruby-comment cmt"># Dealer cards are displayed</span>
+        <span class="ruby-identifier">dealer_hand_value</span> = <span class="ruby-ivar">@dealer_hand</span>.<span class="ruby-identifier">hand_value</span>()                     <span class="ruby-comment cmt"># Dealer hand value is recomputed</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

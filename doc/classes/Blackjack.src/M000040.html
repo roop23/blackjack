@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>table_settle_round (Blackjack)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File Blackjack.rb, line 270</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">table_settle_round</span>()
+    <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;\n**** Everyone in this round has completed playing ****&quot;</span>
+    <span class="ruby-identifier">show_dealer_cards</span>()                                                              <span class="ruby-comment cmt"># Dealer plays his part and then reveals the cards</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Dealer final hand value = #{@dealer_hand.hand_value()}&quot;</span>
+    <span class="ruby-ivar">@players</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">player</span><span class="ruby-operator">|</span>                                                        <span class="ruby-comment cmt"># For each player</span>
+      <span class="ruby-identifier">player</span>.<span class="ruby-identifier">settle_round</span>(<span class="ruby-ivar">@dealer_hand</span>.<span class="ruby-identifier">hand_value</span>(), <span class="ruby-ivar">@dealer_hand</span>.<span class="ruby-identifier">is_blackjack</span>())    <span class="ruby-comment cmt"># Call the player's settle_round function to settle bets</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

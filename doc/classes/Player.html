@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Player</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Player</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/Player_rb.html">
+                Player.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+The class <a href="Player.html">Player</a> is used to represent a single
+player at the table. An object of this class represents a real world person
+who is at a <a href="Blackjack.html">Blackjack</a> table.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000012">add_winnings</a>&nbsp;&nbsp;
+      <a href="#M000005">can_bet</a>&nbsp;&nbsp;
+      <a href="#M000006">can_double</a>&nbsp;&nbsp;
+      <a href="#M000007">can_double_down</a>&nbsp;&nbsp;
+      <a href="#M000018">can_split</a>&nbsp;&nbsp;
+      <a href="#M000013">check_blackjack</a>&nbsp;&nbsp;
+      <a href="#M000003">clear</a>&nbsp;&nbsp;
+      <a href="#M000017">double_down</a>&nbsp;&nbsp;
+      <a href="#M000014">has_unplayed_hands</a>&nbsp;&nbsp;
+      <a href="#M000015">hit</a>&nbsp;&nbsp;
+      <a href="#M000001">new</a>&nbsp;&nbsp;
+      <a href="#M000004">out_of_money</a>&nbsp;&nbsp;
+      <a href="#M000008">place_bet</a>&nbsp;&nbsp;
+      <a href="#M000009">place_double_bet</a>&nbsp;&nbsp;
+      <a href="#M000011">print_player_hands</a>&nbsp;&nbsp;
+      <a href="#M000010">settle_round</a>&nbsp;&nbsp;
+      <a href="#M000019">split</a>&nbsp;&nbsp;
+      <a href="#M000016">stand</a>&nbsp;&nbsp;
+      <a href="#M000002">start_round</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">position</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc">
+Represents the position of the player across the table. This attribute is
+used to address players by their position.
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">total_money</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc">
+Represents the total money available to the player at the start of the
+round. This attribute is updated at the end of each round with respect to
+the result of the round. This attribute is also used to validate whether a
+player can use doubling down or splitting options, if available.
+
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000001" class="method-detail">
+        <a name="M000001"></a>
+
+        <div class="method-heading">
+          <a href="Player.src/M000001.html" target="Code" class="method-signature"
+            onclick="popupCode('Player.src/M000001.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(total_money, position)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates an object of Person. The default values of hands is an empty array
+as the player hasn&#8216;t been dealt cards yet. This method is called when
+a player has to be added to the table. current_hand is a variable that
+keeps track of the current hand that is being played by the player.
+current_hand starts/resets at 0. This variable increases when the player
+has finished playing the current hand. When current_hand reaches
+hands.length + 1, it indicates that all hands of the player have been
+completed dealing with. Params:
+</p>
+<table>
+<tr><td valign="top"><tt>total_money</tt>:</td><td>initial sum of money made available to the player for bets
+
+</td></tr>
+<tr><td valign="top"><tt>position</tt>:</td><td>the position of the player on the table
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000012" class="method-detail">
+        <a name="M000012"></a>
+
+        <div class="method-heading">
+          <a href="Player.src/M000012.html" target="Code" class="method-signature"
+            onclick="popupCode('Player.src/M000012.html');return false;">
+          <span class="method-name">add_winnings</span><span class="method-args">(hand, blackjack=false, push=false)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method adds the winnings of the hand to the player. Params:
+</p>
+<table>
+<tr><td valign="top"><tt>hand</tt>:</td><td>the hand under consideration
+
+</td></tr>
+<tr><td valign="top"><tt>blackjack</tt>:</td><td>boolean value indicating if the player got a blackjack or not
+
+</td></tr>
+<tr><td valign="top"><tt>false</tt>:</td><td>boolean value indicating if the player drew against the dealer
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M000005" class="method-detail">
+        <a name="M000005"></a>
+
+        <div class="method-heading">
+          <a href="Player.src/M000005.html" target="Code" class="method-signature"
+            onclick="popupCode('Player.src/M000005.html');return false;">
+          <span class="method-name">can_bet</span><span class="method-args">(amount)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method returns a boolean value indicating if the amount received is a
+valid bet. A bet amount if valid if it is positive and if the player has
+total_money of at least the amount passed as the bet amount. Params:
+</p>
+<table>
+<tr><td valign="top"><tt>amount</tt>:</td><td>the value of bet which is given as user input
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M000006" class="method-detail">
+        <a name="M000006"></a>
+
+        <div class="method-heading">
+          <a href="Player.src/M000006.html" target="Code" class="method-signature"
+            onclick="popupCode('Player.src/M000006.html');return false;">
+          <span class="method-name">can_double</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method returns a boolean value indicating if the player has enough
+money left to perform a double down. Params: <tt>None</tt>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
+
+        <div class="method-heading">
+          <a href="Player.src/M000007.html" target="Code" class="method-signature"
+            onclick="popupCode('Player.src/M000007.html');return false;">
+          <span class="method-name">can_double_down</span><span class="method-args">(amount)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method returns a boolean value indicating if the amount received is a
+valid bet for a double down. A bet amount if valid if it is positive and if
+the player has total_money of at least the amount passed as the bet amount.
+The additional condition is that the <a href="Player.html#M000001">new</a>
+bet value must be &lt;= original bet of this hand for a double down.
+Params:
+</p>
+<table>
+<tr><td valign="top"><tt>amount</tt>:</td><td>the value of double down bet which is given as user input
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M000018" class="method-detail">
+        <a name="M000018"></a>
+
+        <div class="method-heading">
+          <a href="Player.src/M000018.html" target="Code" class="method-signature"
+            onclick="popupCode('Player.src/M000018.html');return false;">
+          <span class="method-name">can_split</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method checks if a player can <a href="Player.html#M000019">split</a>
+on the current hand. First the hand is checked for a length of 2 and the 2
+cards being the same. Then it checks if the player has enough money to
+double the bet. It also checks the number of hands of the player. A player
+can utmost have 4 hands. Any value more than that is not permitted. Params:
+<tt>None</tt>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000013" class="method-detail">
+        <a name="M000013"></a>
+
+        <div class="method-heading">
+          <a href="Player.src/M000013.html" target="Code" class="method-signature"
+            onclick="popupCode('Player.src/M000013.html');return false;">
+          <span class="method-name">check_blackjack</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method checks if the original hand received by the player during the
+beginning of the round is a blackjack or not. If the hand is a blackjack,
+it calls <a href="Player.html#M000012">add_winnings</a> to credit the
+player with the winnings for the particular hand. Params: <tt>None</tt>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000003" class="method-detail">
+        <a name="M000003"></a>
+
+        <div class="method-heading">
+          <a href="Player.src/M000003.html" target="Code" class="method-signature"
+            onclick="popupCode('Player.src/M000003.html');return false;">
+          <span class="method-name">clear</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method clears the hands that were present in the previous round. It
+resets the hands to an empty array. Params: <tt>None</tt>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000017" class="method-detail">
+        <a name="M000017"></a>
+
+        <div class="method-heading">
+          <a href="Player.src/M000017.html" target="Code" class="method-signature"
+            onclick="popupCode('Player.src/M000017.html');return false;">
+          <span class="method-name">double_down</span><span class="method-args">(amount, next_card)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method is called when the player chooses to double down on the current
+hand. First, this method places the additional bet of the user. Then it
+calls <a href="Player.html#M000015">hit</a> with the <a
+href="Player.html#M000001">new</a> card to accept the <a
+href="Player.html#M000001">new</a> card from the shoe. Then the
+player&#8216;s hands are printed. This results in end of the user action on
+the current hand.
+</p>
+<table>
+<tr><td valign="top"><tt>amount</tt>:</td><td>the additional bet placed due to doubling down
+
+</td></tr>
+<tr><td valign="top"><tt>next_card</tt>:</td><td>the <a href="Player.html#M000001">new</a> card picked out of the shoe
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M000014" class="method-detail">
+        <a name="M000014"></a>
+
+        <div class="method-heading">
+          <a href="Player.src/M000014.html" target="Code" class="method-signature"
+            onclick="popupCode('Player.src/M000014.html');return false;">
+          <span class="method-name">has_unplayed_hands</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method returns a boolean variable indicating if the user still has at
+least one hand which he has to play. Params: <tt>None</tt>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000015" class="method-detail">
+        <a name="M000015"></a>
+
+        <div class="method-heading">
+          <a href="Player.src/M000015.html" target="Code" class="method-signature"
+            onclick="popupCode('Player.src/M000015.html');return false;">
+          <span class="method-name">hit</span><span class="method-args">(card)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method is called when the player chooses to <a
+href="Player.html#M000015">hit</a> on the curernt hand. The method first
+identifies the current hand on which the player is playing. Then it pushes
+the <a href="Player.html#M000001">new</a> card to the the hand. If the
+resulting hand is a bust, it reports to the user. A bust results in the
+hand being completed w.r.t the user action and also w.r.t the dealer.
+</p>
+<table>
+<tr><td valign="top"><tt>card</tt>:</td><td>the <a href="Player.html#M000001">new</a> card picked out of the shoe
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M000004" class="method-detail">
+        <a name="M000004"></a>
+
+        <div class="method-heading">
+          <a href="Player.src/M000004.html" target="Code" class="method-signature"
+            onclick="popupCode('Player.src/M000004.html');return false;">
+          <span class="method-name">out_of_money</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method returns a boolean value indicating if the player has a positive
+balance of money left. Params: <tt>None</tt>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000008" class="method-detail">
+        <a name="M000008"></a>
+
+        <div class="method-heading">
+          <a href="Player.src/M000008.html" target="Code" class="method-signature"
+            onclick="popupCode('Player.src/M000008.html');return false;">
+          <span class="method-name">place_bet</span><span class="method-args">(amount)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method places the user bet on the table. The bet amount is reduced
+from the player&#8216;s money. Params:
+</p>
+<table>
+<tr><td valign="top"><tt>amount</tt>:</td><td>the bet value
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M000009" class="method-detail">
+        <a name="M000009"></a>
+
+        <div class="method-heading">
+          <a href="Player.src/M000009.html" target="Code" class="method-signature"
+            onclick="popupCode('Player.src/M000009.html');return false;">
+          <span class="method-name">place_double_bet</span><span class="method-args">(amount)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method places the double down bet on the table. The bet amount is
+reduced from the player&#8216;s money. The bet of the hand is increased by
+the double down bet amount. Params:
+</p>
+<table>
+<tr><td valign="top"><tt>amount</tt>:</td><td>the value of double down bet which has already been validated
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M000011" class="method-detail">
+        <a name="M000011"></a>
+
+        <div class="method-heading">
+          <a href="Player.src/M000011.html" target="Code" class="method-signature"
+            onclick="popupCode('Player.src/M000011.html');return false;">
+          <span class="method-name">print_player_hands</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method prints the information of each hand that the player has. The
+method calls the hand.to_s method to get a string that contains the hand
+information and prints it on the console. Params: <tt>None</tt>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000010" class="method-detail">
+        <a name="M000010"></a>
+
+        <div class="method-heading">
+          <a href="Player.src/M000010.html" target="Code" class="method-signature"
+            onclick="popupCode('Player.src/M000010.html');return false;">
+          <span class="method-name">settle_round</span><span class="method-args">(dealer_value, dealer_has_blackjack)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method is used to settle the bets of all hands of the player which are
+active at the end of the current round. For each hand which is not bust or
+not a blackjack, the hand value is compared with that of the dealer and a
+respective action is taken based on the comparison. Params:
+</p>
+<table>
+<tr><td valign="top"><tt>dealer_value</tt>:</td><td>the hand value of the dealer&#8216;s cards
+
+</td></tr>
+<tr><td valign="top"><tt>dealer_has_blackjack</tt>:</td><td>boolean flag indicating if the dealer has a blackjack or not
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M000019" class="method-detail">
+        <a name="M000019"></a>
+
+        <div class="method-heading">
+          <a href="Player.src/M000019.html" target="Code" class="method-signature"
+            onclick="popupCode('Player.src/M000019.html');return false;">
+          <span class="method-name">split</span><span class="method-args">(next_cards)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method is called when the player chooses to double down on the current
+hand. Two <a href="Player.html#M000001">new</a> hands are created with
+cards from the current hand. These <a href="Player.html#M000001">new</a>
+hands are placed just on right of the current hand. An additional bet is
+placed of the same value as the original bet. At the end, the current hand,
+which was the parent of the <a href="Player.html#M000019">split</a>
+operation is deleted from the list of hands. Current_hand is not modified
+as deleting the current hand ensures that current_hand points to the first
+of the two hands that were created during the <a
+href="Player.html#M000019">split</a> operation. Params:
+</p>
+<table>
+<tr><td valign="top"><tt>next_cards</tt>:</td><td>the array of two cards. one card each for the two hands being created as a
+result of <a href="Player.html#M000019">split</a>
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+      <div id="method-M000016" class="method-detail">
+        <a name="M000016"></a>
+
+        <div class="method-heading">
+          <a href="Player.src/M000016.html" target="Code" class="method-signature"
+            onclick="popupCode('Player.src/M000016.html');return false;">
+          <span class="method-name">stand</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This method is called when the player chooses to <a
+href="Player.html#M000015">hit</a> on a hand. When a user decides to <a
+href="Player.html#M000016">stand</a>, he has completed acting on the hand.
+Params: <tt>None</tt>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000002" class="method-detail">
+        <a name="M000002"></a>
+
+        <div class="method-heading">
+          <a href="Player.src/M000002.html" target="Code" class="method-signature"
+            onclick="popupCode('Player.src/M000002.html');return false;">
+          <span class="method-name">start_round</span><span class="method-args">(cards, bet)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates the first hand of the <a href="Player.html#M000001">new</a> round
+and reduces the bet amount from the player&#8216;s total_money value. This
+method is called when a player places a valid bet and receives cards for
+the first time in each <a href="Player.html#M000001">new</a> round of
+gameplay. Params:
+</p>
+<table>
+<tr><td valign="top"><tt>cards</tt>:</td><td>the array of two cards which form the hand
+
+</td></tr>
+<tr><td valign="top"><tt>bet</tt>:</td><td>the bet amount which is associated with this hand
+
+</td></tr>
+</table>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

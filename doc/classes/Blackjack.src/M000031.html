@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>run_game (Blackjack)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File Blackjack.rb, line 99</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run_game</span>()
+    <span class="ruby-identifier">init_cards</span>()
+    <span class="ruby-identifier">init_table</span>()
+    <span class="ruby-keyword kw">while</span> <span class="ruby-ivar">@can_continue</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;\n***Get ready for a new round***\n\n&quot;</span>
+      <span class="ruby-identifier">init_round</span>()
+      <span class="ruby-identifier">play_round</span>()
+      <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@can_continue</span>                              <span class="ruby-comment cmt"># Can be modified by clean_up_table method when all players run out of money</span>
+        <span class="ruby-identifier">print</span> <span class="ruby-value str">&quot;\nEnter quit to end the game. Press enter to play next round : &quot;</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">gets</span>.<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">eql?</span> <span class="ruby-value str">&quot;quit&quot;</span>
+          <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;\nExiting the game\n\n&quot;</span>
+          <span class="ruby-ivar">@can_continue</span> = <span class="ruby-keyword kw">false</span>                     <span class="ruby-comment cmt"># end the game loop if the user wants to quit</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;The game has finished. Thanks for playing!&quot;</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

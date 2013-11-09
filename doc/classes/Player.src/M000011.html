@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>print_player_hands (Player)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File Player.rb, line 146</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">print_player_hands</span>()
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;--- Player #{@position} --- &quot;</span>
+    <span class="ruby-ivar">@hands</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">hand</span><span class="ruby-operator">|</span>                               <span class="ruby-comment cmt"># The player might have multiple hands, if splitting was used</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-identifier">hand</span>.<span class="ruby-identifier">to_s</span>()                                  <span class="ruby-comment cmt"># Print the details of the hand</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>play_round (Blackjack)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File Blackjack.rb, line 200</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">play_round</span>()
+    <span class="ruby-ivar">@players</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">player</span><span class="ruby-operator">|</span>      
+
+      <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">player</span>.<span class="ruby-identifier">has_unplayed_hands</span>()   <span class="ruby-comment cmt"># While the player has any more hands which he hasn't played</span>
+        <span class="ruby-identifier">player</span>.<span class="ruby-identifier">print_player_hands</span>()       <span class="ruby-comment cmt"># Print the state of the board</span>
+        <span class="ruby-identifier">print</span> <span class="ruby-node">&quot;Player #{player.position}, please enter your option - hit, stand, split or double : &quot;</span>   <span class="ruby-comment cmt"># Prompt for user input</span>
+        <span class="ruby-identifier">option</span> = <span class="ruby-identifier">gets</span>.<span class="ruby-identifier">chomp</span>
+
+        <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">option</span>                               <span class="ruby-comment cmt"># Check for user input matching to functionaltity provided and call the respective methods</span>
+        <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;hit&quot;</span>
+          <span class="ruby-identifier">player</span>.<span class="ruby-identifier">hit</span>(<span class="ruby-ivar">@shoe</span>.<span class="ruby-identifier">pop</span>())                 <span class="ruby-comment cmt"># Player receives one card for the hand</span>
+        <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;stand&quot;</span>
+          <span class="ruby-identifier">player</span>.<span class="ruby-identifier">stand</span>()
+        <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;double&quot;</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">player</span>.<span class="ruby-identifier">can_double</span>()                 <span class="ruby-comment cmt"># Check if user has any money left as bet for double down</span>
+            <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;You don't have money to double down!&quot;</span>
+          <span class="ruby-keyword kw">else</span>
+            <span class="ruby-identifier">amount</span> = <span class="ruby-identifier">get_double_bet</span>(<span class="ruby-identifier">player</span>)       <span class="ruby-comment cmt"># Obtain the bet for doubling down</span>
+            <span class="ruby-identifier">player</span>.<span class="ruby-identifier">double_down</span>(<span class="ruby-identifier">amount</span>, <span class="ruby-ivar">@shoe</span>.<span class="ruby-identifier">pop</span>())
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;split&quot;</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">player</span>.<span class="ruby-identifier">can_split</span>()                  <span class="ruby-comment cmt"># If split is not possible either due to cards not being same or lack of money</span>
+            <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Split is not possible! Check cards and/or money available&quot;</span>
+          <span class="ruby-keyword kw">else</span>
+            <span class="ruby-identifier">cards</span> = [<span class="ruby-ivar">@shoe</span>.<span class="ruby-identifier">pop</span>(), <span class="ruby-ivar">@shoe</span>.<span class="ruby-identifier">pop</span>()]    <span class="ruby-comment cmt"># One card each for the hand being created as a result of split</span>
+            <span class="ruby-identifier">player</span>.<span class="ruby-identifier">split</span>(<span class="ruby-identifier">cards</span>)
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">else</span>                                      <span class="ruby-comment cmt"># If the user input was invalid, prompt for a valid input</span>
+          <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;Please enter a valid option.&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+      
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">end_round</span>()                                   <span class="ruby-comment cmt"># Call to finalize the bettings of the round</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>
